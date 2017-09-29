@@ -20,15 +20,15 @@ class User {
 	var lastName: String
 	var preferredName: String
 	var fullName: String
-	var phone: String
-	var email: String
+	var phone: String?
+	var email: String?
 	var bio: String?
 	var status: Status
 	var year: String
 	var address: String?
 	var photo: UIImage?
 	
-	init(firstName: String, lastName: String, preferredName: String, fullName: String, phone: String, email: String, bio: String?, status: Status, year: String, address: String?, photoName: String) {
+	init(firstName: String, lastName: String, preferredName: String, fullName: String, phone: String?, email: String?, bio: String?, status: Status, year: String, address: String?, photoName: String) {
 		self.firstName = firstName
 		self.lastName = lastName
 		self.preferredName = preferredName

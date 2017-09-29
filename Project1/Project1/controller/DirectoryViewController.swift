@@ -20,13 +20,16 @@ class DirectoryViewController: UIViewController, UITableViewDataSource, UITableV
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		users = Client.getAllUsers()
+		Client.getAllUsers { users in
+			self.users = users
+			self.tableView.reloadData()
+		}
 		
 		tableView.hideEmptyCells()
 	}
 	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
 		
 		if let indexPath = tableView.indexPathForSelectedRow {
 			tableView.deselectRow(at: indexPath, animated: true)
@@ -46,12 +49,14 @@ class DirectoryViewController: UIViewController, UITableViewDataSource, UITableV
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if let cell = tableView.dequeueResusableCell(for: indexPath) as? DirectoryTableViewCell {
+		if let cell = tableView.dequeueReusableCell(for: indexPath) as? DirectoryTableViewCell {
 			cell.user = users[indexPath.row]
 			return cell
 		}
 		return UITableViewCell()
 	}
+	
+	//TODO: Set up alphabet and search
 	
 	//MARK: UITableViewDelegate callbacks
 	
