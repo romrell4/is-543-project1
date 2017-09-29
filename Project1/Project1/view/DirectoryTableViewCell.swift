@@ -9,8 +9,21 @@
 import UIKit
 
 class DirectoryTableViewCell: UITableViewCell {
+	//MARK: Outlets
 	@IBOutlet weak var profileImageView: UIImageView!
 	@IBOutlet weak var nameLabel: UILabel!
 	
+	//MARK: Public properties
+	var user: User? {
+		didSet {
+			profileImageView.image = user?.photo
+			nameLabel.text = user?.fullName
+		}
+	}
 	
+	override func awakeFromNib() {
+		profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
+		profileImageView.layer.masksToBounds = true
+		profileImageView.layer.borderWidth = 0
+	}
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C1182911F7ECBF2005EF365 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1182901F7ECBF2005EF365 /* User.swift */; };
 		0C1182931F7ECCB0005EF365 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1182921F7ECCB0005EF365 /* Client.swift */; };
+		0C1182951F7EDD42005EF365 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1182941F7EDD42005EF365 /* ProfileViewController.swift */; };
 		0C32CCBC1F7BEB5B00164E57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32CCBB1F7BEB5B00164E57 /* AppDelegate.swift */; };
 		0C32CCBE1F7BEB5B00164E57 /* DirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32CCBD1F7BEB5B00164E57 /* DirectoryViewController.swift */; };
 		0C32CCC11F7BEB5B00164E57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C32CCBF1F7BEB5B00164E57 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		0C1182901F7ECBF2005EF365 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0C1182921F7ECCB0005EF365 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		0C1182941F7EDD42005EF365 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0C32CCB81F7BEB5B00164E57 /* Project1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C32CCBB1F7BEB5B00164E57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C32CCBD1F7BEB5B00164E57 /* DirectoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryViewController.swift; sourceTree = "<group>"; };
@@ -28,10 +30,6 @@
 		0C32CCC21F7BEB5B00164E57 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C32CCC51F7BEB5B00164E57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0C32CCC71F7BEB5B00164E57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0C32CCD91F7BEEC200164E57 /* founder3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = founder3.png; path = Project1/support/assets/founder3.png; sourceTree = SOURCE_ROOT; };
-		0C32CCDA1F7BEEC200164E57 /* founder2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = founder2.png; path = Project1/support/assets/founder2.png; sourceTree = SOURCE_ROOT; };
-		0C32CCDB1F7BEEC200164E57 /* founder4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = founder4.png; path = Project1/support/assets/founder4.png; sourceTree = SOURCE_ROOT; };
-		0C32CCDC1F7BEEC200164E57 /* founder1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = founder1.png; path = Project1/support/assets/founder1.png; sourceTree = SOURCE_ROOT; };
 		0C32CCDD1F7BEF0F00164E57 /* Founders Data.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Founders Data.xlsx"; path = "assets/Founders Data.xlsx"; sourceTree = "<group>"; };
 		0C32CCDE1F7BF37E00164E57 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0C32CCE01F7BF6B300164E57 /* DirectoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -79,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				0C32CCBD1F7BEB5B00164E57 /* DirectoryViewController.swift */,
+				0C1182941F7EDD42005EF365 /* ProfileViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -86,10 +85,6 @@
 		0C32CCCE1F7BEBE500164E57 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				0C32CCDC1F7BEEC200164E57 /* founder1.png */,
-				0C32CCDA1F7BEEC200164E57 /* founder2.png */,
-				0C32CCD91F7BEEC200164E57 /* founder3.png */,
-				0C32CCDB1F7BEEC200164E57 /* founder4.png */,
 				0C32CCC41F7BEB5B00164E57 /* LaunchScreen.storyboard */,
 				0C32CCBF1F7BEB5B00164E57 /* Main.storyboard */,
 				0C32CCC21F7BEB5B00164E57 /* Assets.xcassets */,
@@ -194,6 +189,7 @@
 				0C32CCDF1F7BF37E00164E57 /* Extensions.swift in Sources */,
 				0C1182931F7ECCB0005EF365 /* Client.swift in Sources */,
 				0C32CCBC1F7BEB5B00164E57 /* AppDelegate.swift in Sources */,
+				0C1182951F7EDD42005EF365 /* ProfileViewController.swift in Sources */,
 				0C1182911F7ECBF2005EF365 /* User.swift in Sources */,
 				0C32CCE11F7BF6B300164E57 /* DirectoryTableViewCell.swift in Sources */,
 			);

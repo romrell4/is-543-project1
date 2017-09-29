@@ -17,3 +17,17 @@ extension UITableView {
 		tableFooterView = UIView()
 	}
 }
+
+extension UIColor {
+	convenience init(red: CGFloat, green: CGFloat, blue: CGFloat, opacity: CGFloat = 1) {
+		self.init(red: red/255.0, green: green/255.0, blue: blue/255.0, alpha: opacity)
+	}
+	
+	static var navBar: UIColor {
+		return UIColor(red: 111, green: 31, blue: 168)
+	}
+	
+	static var button: UIColor {
+		return UIColor(red: 255, green: 216, blue: 250)
+	}
+}
