@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C1182911F7ECBF2005EF365 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1182901F7ECBF2005EF365 /* User.swift */; };
+		0C1182931F7ECCB0005EF365 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1182921F7ECCB0005EF365 /* Client.swift */; };
 		0C32CCBC1F7BEB5B00164E57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32CCBB1F7BEB5B00164E57 /* AppDelegate.swift */; };
 		0C32CCBE1F7BEB5B00164E57 /* DirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32CCBD1F7BEB5B00164E57 /* DirectoryViewController.swift */; };
 		0C32CCC11F7BEB5B00164E57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C32CCBF1F7BEB5B00164E57 /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C1182901F7ECBF2005EF365 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0C1182921F7ECCB0005EF365 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		0C32CCB81F7BEB5B00164E57 /* Project1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C32CCBB1F7BEB5B00164E57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C32CCBD1F7BEB5B00164E57 /* DirectoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +101,8 @@
 		0C32CCCF1F7BEBF300164E57 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				0C1182921F7ECCB0005EF365 /* Client.swift */,
+				0C1182901F7ECBF2005EF365 /* User.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -186,7 +192,9 @@
 			files = (
 				0C32CCBE1F7BEB5B00164E57 /* DirectoryViewController.swift in Sources */,
 				0C32CCDF1F7BF37E00164E57 /* Extensions.swift in Sources */,
+				0C1182931F7ECCB0005EF365 /* Client.swift in Sources */,
 				0C32CCBC1F7BEB5B00164E57 /* AppDelegate.swift in Sources */,
+				0C1182911F7ECBF2005EF365 /* User.swift in Sources */,
 				0C32CCE11F7BF6B300164E57 /* DirectoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

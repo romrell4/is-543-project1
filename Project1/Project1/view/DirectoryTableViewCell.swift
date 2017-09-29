@@ -9,9 +9,8 @@
 import UIKit
 
 class DirectoryTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-		
-    }
+	@IBOutlet weak var profileImageView: UIImageView!
+	@IBOutlet weak var nameLabel: UILabel!
+	
+	
 }

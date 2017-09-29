@@ -26,22 +26,35 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ibv-k6-qlj" id="WDT-Ug-e8e">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q5v-a0-imv">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="founder1.png" translatesAutoresizingMaskIntoConstraints="NO" id="q5v-a0-imv">
                                                     <rect key="frame" x="8" y="9" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="FlN-Q6-Blv"/>
                                                         <constraint firstAttribute="height" constant="60" id="eL8-Iz-iWb"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7SN-IF-mby">
+                                                    <rect key="frame" x="76" y="29" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="q5v-a0-imv" firstAttribute="centerY" secondItem="WDT-Ug-e8e" secondAttribute="centerY" id="5Jp-bO-zXN"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="7SN-IF-mby" secondAttribute="trailing" id="NHN-8V-V9a"/>
+                                                <constraint firstItem="7SN-IF-mby" firstAttribute="centerY" secondItem="WDT-Ug-e8e" secondAttribute="centerY" id="cWo-Nt-rGc"/>
+                                                <constraint firstItem="7SN-IF-mby" firstAttribute="leading" secondItem="q5v-a0-imv" secondAttribute="trailing" constant="8" id="thj-i2-ANu"/>
                                                 <constraint firstItem="q5v-a0-imv" firstAttribute="leading" secondItem="WDT-Ug-e8e" secondAttribute="leadingMargin" id="yRl-5z-I9j"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="7SN-IF-mby" id="4hF-YV-I8V"/>
+                                            <outlet property="profileImageView" destination="q5v-a0-imv" id="wpm-pJ-4Ea"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -87,4 +100,7 @@
             <point key="canvasLocation" x="-305" y="133"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="founder1.png" width="256" height="256"/>
+    </resources>
 </document>
