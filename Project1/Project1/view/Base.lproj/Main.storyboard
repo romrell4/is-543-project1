@@ -113,15 +113,27 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9H-X0-7LN" customClass="ContactOptionButton" customModule="Project1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="call"/>
+                                        <connections>
+                                            <action selector="callButtonTapped:" destination="f6X-li-pje" eventType="touchUpInside" id="WYQ-VB-Zlq"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYT-bu-yi9" customClass="ContactOptionButton" customModule="Project1" customModuleProvider="target">
                                         <rect key="frame" x="60" y="0.0" width="30" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="text"/>
+                                        <connections>
+                                            <action selector="textButtonTapped:" destination="f6X-li-pje" eventType="touchUpInside" id="O4g-1G-dUd"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVn-P1-ir0" customClass="ContactOptionButton" customModule="Project1" customModuleProvider="target">
                                         <rect key="frame" x="120" y="0.0" width="30" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="email"/>
+                                        <connections>
+                                            <action selector="emailButtonTapped:" destination="f6X-li-pje" eventType="touchUpInside" id="Ubd-ij-dVO"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

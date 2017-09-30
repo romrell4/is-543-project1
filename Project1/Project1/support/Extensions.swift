@@ -10,6 +10,14 @@ import UIKit
 
 //MARK: UI
 
+extension UIViewController {
+	func displayDialog(title: String? = nil, message: String? = nil, dismissHandler: ((UIAlertAction) -> Void)? = nil) {
+		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "OK", style: .default, handler: dismissHandler))
+		present(alert, animated: true, completion: nil)
+	}
+}
+
 extension UITableView {
 	func dequeueReusableCell(for indexPath: IndexPath, withIdentifier identifier: String = "cell") -> UITableViewCell {
 		return dequeueReusableCell(withIdentifier: identifier, for: indexPath)

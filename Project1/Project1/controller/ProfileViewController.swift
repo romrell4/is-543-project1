@@ -10,6 +10,24 @@ import UIKit
 
 private let PROFILE_IMAGE_HEIGHT: CGFloat = 150
 
+enum UrlType: String {
+	case call
+	case text
+	case mail
+	
+	var prefix: String {
+		switch self {
+		case .call: return "tel"
+		case .text: return "sms"
+		case .mail: return "mailto"
+		}
+	}
+	
+	var valueName: String {
+		return self == .mail ? "email" : "phone number"
+	}
+}
+
 class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	//MARK: Outlets
 	@IBOutlet private weak var profileImageView: ProfileImageView!
@@ -94,6 +112,24 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		inEditingMode = !inEditingMode
 	}
 	
+	@IBAction func callButtonTapped(_ sender: Any) {
+		if let url = getValidUrl(type: .call, urlString: user.phone) {
+			UIApplication.shared.open(url)
+		}
+	}
+	
+	@IBAction func textButtonTapped(_ sender: Any) {
+		if let url = getValidUrl(type: .text, urlString: user.phone) {
+			UIApplication.shared.open(url)
+		}
+	}
+	
+	@IBAction func emailButtonTapped(_ sender: Any) {
+		if let url = getValidUrl(type: .mail, urlString: user.email) {
+			UIApplication.shared.open(url)
+		}
+	}
+	
 	//MARK: Private functions
 	
 	private func setupUI() {
@@ -115,6 +151,14 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 			tableData.append(Row(text: bio, type: .paragraph))
 		}
 		tableView.reloadData()
+	}
+	
+	private func getValidUrl(type: UrlType, urlString: String?) -> URL? {
+		guard let tmp = urlString, let url = URL(string: "\(type.prefix):\(tmp)"), UIApplication.shared.canOpenURL(url) else {
+			displayDialog(title: "Error", message: "This device cannot contact this user's \(type.valueName) (\(urlString ?? "Unknown")).")
+			return nil
+		}
+		return url
 	}
 	
 	private func saveData() {
