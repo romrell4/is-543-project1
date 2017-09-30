@@ -17,7 +17,7 @@ class ProfileEditableTableViewCell: UITableViewCell {
 	var row: Row? {
 		didSet {
 			titleLabel.text = row?.text
-			detailTextField?.placeholder = row?.detailText
+			detailTextField?.text = row?.detailText
 		}
 	}
 }

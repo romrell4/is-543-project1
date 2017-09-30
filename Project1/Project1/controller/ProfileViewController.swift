@@ -15,6 +15,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	@IBOutlet private weak var profileImageView: CircleImageView!
 	@IBOutlet private weak var profileImageHeightConstraint: NSLayoutConstraint!
 	@IBOutlet private weak var tableView: UITableView!
+	@IBOutlet private weak var contactStackView: UIStackView!
 	
 	//MARK: Public properties
 	var user: User!
@@ -23,8 +24,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	var tableData = [Row]()
 	var inEditingMode: Bool = false {
 		didSet {
+			if !inEditingMode {
+				saveData()
+			}
 			navigationItem.rightBarButtonItem?.title = inEditingMode ? "Done" : "Edit"
-			tableView.reloadData()
+			reloadTableData()
 		}
 	}
 	
@@ -32,7 +36,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		super.viewDidLoad()
 		
 		setupUI()
-		loadTableData()
+		reloadTableData()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +63,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		} else {
 			let cell = tableView.dequeueReusableCell(for: indexPath)
 			cell.textLabel?.text = row.text
-			cell.detailTextLabel?.text = row.detailText
+			cell.detailTextLabel?.text = row.detailText ?? "Unlisted"
 			return cell
 		}
 	}
@@ -88,14 +92,35 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		profileImageHeightConstraint.constant = PROFILE_IMAGE_HEIGHT
 	}
 	
-	private func loadTableData() {
+	private func reloadTableData() {
 		tableData = [
 			Row(text: "Name", detailText: user.fullName),
 			Row(text: "Company Name", detailText: "Unknown"),
-			Row(text: "Phone", detailText: user.phone ?? "Unlisted"),
-			Row(text: "Email", detailText: user.email ?? "Unlisted"),
+			Row(text: "Phone", detailText: user.phone),
+			Row(text: "Email", detailText: user.email),
 			Row(text: "Spouse Name", detailText: "Unknown"),
-			Row(text: "Business Profile", detailText: user.bio ?? "Unlisted")
+			Row(text: "Business Profile", detailText: user.bio)
 		]
+		tableView.reloadData()
+	}
+	
+	private func saveData() {
+		//TODO: Add company and spouse if needed
+		guard let fullName = getDetailText(forRow: 0) else {
+			let alert = UIAlertController(title: "Error", message: "There was an error saving the data. Please try again later.", preferredStyle: .alert)
+			alert.addAction(UIAlertAction(title: "OK", style: .default))
+			present(alert, animated: true)
+			return
+		}
+		user.fullName = fullName
+		user.phone = getDetailText(forRow: 2)
+		user.email = getDetailText(forRow: 3)
+		user.bio = getDetailText(forRow: 5)
+	}
+	
+	private func getDetailText(forRow row: Int) -> String? {
+		let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? ProfileEditableTableViewCell
+		let text = cell?.detailTextField.text
+		return text != "" ? text : nil
 	}
 }

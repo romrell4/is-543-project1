@@ -8,6 +8,8 @@
 
 import UIKit
 
+//MARK: UI
+
 extension UITableView {
 	func dequeueReusableCell(for indexPath: IndexPath, withIdentifier identifier: String = "cell") -> UITableViewCell {
 		return dequeueReusableCell(withIdentifier: identifier, for: indexPath)
@@ -29,5 +31,17 @@ extension UIColor {
 	
 	static var button: UIColor {
 		return UIColor(red: 255, green: 216, blue: 250)
+	}
+	
+	static var contactButton: UIColor {
+		return UIColor(red: 247, green: 30, blue: 255)
+	}
+}
+
+//MARK: NS
+
+extension NSLayoutConstraint {
+	convenience init(item: Any, attr1: NSLayoutAttribute, relatedBy: NSLayoutRelation = .equal, toItem: Any? = nil, attr2: NSLayoutAttribute = .notAnAttribute, multiplier: CGFloat = 1, constant: CGFloat = 0) {
+		self.init(item: item, attribute: attr1, relatedBy: relatedBy, toItem: toItem, attribute: attr2, multiplier: multiplier, constant: constant)
 	}
 }
