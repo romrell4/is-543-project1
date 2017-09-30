@@ -1,5 +1,5 @@
 //
-//  CircleImageView.swift
+//  ProfileImageView.swift
 //  Project1
 //
 //  Created by Eric Romrell on 9/29/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CircleImageView: UIImageView {
+class ProfileImageView: UIImageView {
 	override func layoutSubviews() {
 		layer.cornerRadius = frame.height / 2
 		layer.masksToBounds = true

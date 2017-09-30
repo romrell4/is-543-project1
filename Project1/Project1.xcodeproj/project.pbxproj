@@ -10,7 +10,7 @@
 		0C1182911F7ECBF2005EF365 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1182901F7ECBF2005EF365 /* User.swift */; };
 		0C1182931F7ECCB0005EF365 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1182921F7ECCB0005EF365 /* Client.swift */; };
 		0C1182951F7EDD42005EF365 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1182941F7EDD42005EF365 /* ProfileViewController.swift */; };
-		0C1182971F7EE29D005EF365 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1182961F7EE29D005EF365 /* CircleImageView.swift */; };
+		0C1182971F7EE29D005EF365 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1182961F7EE29D005EF365 /* ProfileImageView.swift */; };
 		0C1182991F7EFBC6005EF365 /* ProfileEditableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1182981F7EFBC6005EF365 /* ProfileEditableTableViewCell.swift */; };
 		0C11829B1F7EFD62005EF365 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C11829A1F7EFD62005EF365 /* Row.swift */; };
 		0C11829E1F7F16AB005EF365 /* ContactOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C11829D1F7F16AB005EF365 /* ContactOptionView.swift */; };
@@ -27,7 +27,7 @@
 		0C1182901F7ECBF2005EF365 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0C1182921F7ECCB0005EF365 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		0C1182941F7EDD42005EF365 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		0C1182961F7EE29D005EF365 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
+		0C1182961F7EE29D005EF365 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		0C1182981F7EFBC6005EF365 /* ProfileEditableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditableTableViewCell.swift; sourceTree = "<group>"; };
 		0C11829A1F7EFD62005EF365 /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
 		0C11829D1F7F16AB005EF365 /* ContactOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactOptionView.swift; sourceTree = "<group>"; };
@@ -57,7 +57,6 @@
 		0C11829C1F7EFD77005EF365 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				0C1182961F7EE29D005EF365 /* CircleImageView.swift */,
 				0C11829A1F7EFD62005EF365 /* Row.swift */,
 			);
 			path = UI;
@@ -108,6 +107,7 @@
 				0C32CCE01F7BF6B300164E57 /* DirectoryTableViewCell.swift */,
 				0C1182981F7EFBC6005EF365 /* ProfileEditableTableViewCell.swift */,
 				0C11829D1F7F16AB005EF365 /* ContactOptionView.swift */,
+				0C1182961F7EE29D005EF365 /* ProfileImageView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -205,7 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C1182971F7EE29D005EF365 /* CircleImageView.swift in Sources */,
+				0C1182971F7EE29D005EF365 /* ProfileImageView.swift in Sources */,
 				0C32CCBE1F7BEB5B00164E57 /* DirectoryViewController.swift in Sources */,
 				0C1182991F7EFBC6005EF365 /* ProfileEditableTableViewCell.swift in Sources */,
 				0C32CCDF1F7BF37E00164E57 /* Extensions.swift in Sources */,

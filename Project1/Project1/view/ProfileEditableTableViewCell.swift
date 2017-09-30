@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileEditableTableViewCell: UITableViewCell {
 	//MARK: Outlets
-	@IBOutlet private weak var titleLabel: UILabel!
+	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var detailTextField: UITextField!
 	
 	//MARK: Public properties

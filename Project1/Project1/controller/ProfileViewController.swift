@@ -12,7 +12,7 @@ private let PROFILE_IMAGE_HEIGHT: CGFloat = 150
 
 class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	//MARK: Outlets
-	@IBOutlet private weak var profileImageView: CircleImageView!
+	@IBOutlet private weak var profileImageView: ProfileImageView!
 	@IBOutlet private weak var profileImageHeightConstraint: NSLayoutConstraint!
 	@IBOutlet private weak var tableView: UITableView!
 	@IBOutlet private weak var contactStackView: UIStackView!
