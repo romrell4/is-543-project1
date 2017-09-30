@@ -52,20 +52,31 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 50
+		return tableData[indexPath.row].type == .detail ? 50 : 100
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let row = tableData[indexPath.row]
-		if inEditingMode, let cell = tableView.dequeueReusableCell(withIdentifier: "editCell", for: indexPath) as? ProfileEditableTableViewCell {
-			cell.row = row
-			return cell
-		} else {
-			let cell = tableView.dequeueReusableCell(for: indexPath)
-			cell.textLabel?.text = row.text
-			cell.detailTextLabel?.text = row.detailText ?? "Unlisted"
-			return cell
+		switch row.type {
+		case .detail:
+			if inEditingMode, let cell = tableView.dequeueReusableCell(withIdentifier: "editCell", for: indexPath) as? ProfileEditableTableViewCell {
+				cell.row = row
+				return cell
+			} else {
+				let cell = tableView.dequeueReusableCell(for: indexPath)
+				cell.textLabel?.text = row.text
+				cell.detailTextLabel?.text = row.detailText ?? "Unlisted"
+				return cell
+			}
+		case .paragraph:
+			if let cell = tableView.dequeueReusableCell(withIdentifier: "paragraphCell", for: indexPath) as? ProfileParagraphTableViewCell {
+				cell.paragraphTextView.isEditable = inEditingMode
+				cell.paragraphTextView.text = row.text
+				cell.paragraphTextView.scrollRangeToVisible(NSRange(location: 0, length: 0))
+				return cell
+			}
 		}
+		return UITableViewCell()
 	}
 	
 	//MARK: UITableViewDelegate callbacks
@@ -99,8 +110,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 			Row(text: "Phone", detailText: user.phone),
 			Row(text: "Email", detailText: user.email),
 			Row(text: "Spouse Name", detailText: "Unknown"),
-			Row(text: "Business Profile", detailText: user.bio)
 		]
+		if let bio = user.bio {
+			tableData.append(Row(text: bio, type: .paragraph))
+		}
 		tableView.reloadData()
 	}
 	
@@ -115,12 +128,18 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		user.fullName = fullName
 		user.phone = getDetailText(forRow: 2)
 		user.email = getDetailText(forRow: 3)
-		user.bio = getDetailText(forRow: 5)
+		user.bio = getParagraphText(forRow: 5)
 	}
 	
 	private func getDetailText(forRow row: Int) -> String? {
 		let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? ProfileEditableTableViewCell
 		let text = cell?.detailTextField.text
+		return text != "" ? text : nil
+	}
+	
+	private func getParagraphText(forRow row: Int) -> String? {
+		let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? ProfileParagraphTableViewCell
+		let text = cell?.paragraphTextView.text
 		return text != "" ? text : nil
 	}
 }

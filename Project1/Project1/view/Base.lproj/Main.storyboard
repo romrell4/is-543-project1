@@ -189,6 +189,32 @@
                                             <outlet property="titleLabel" destination="gDu-98-0eH" id="JJr-bc-ZPe"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="paragraphCell" id="yKo-Kj-DQH" customClass="ProfileParagraphTableViewCell" customModule="Project1" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yKo-Kj-DQH" id="7gv-Lp-TAf">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4V8-CB-Ch3">
+                                                    <rect key="frame" x="8" y="8" width="359" height="28"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="4V8-CB-Ch3" secondAttribute="bottom" id="31c-d7-WZy"/>
+                                                <constraint firstItem="4V8-CB-Ch3" firstAttribute="top" secondItem="7gv-Lp-TAf" secondAttribute="topMargin" id="Uk1-gP-JNZ"/>
+                                                <constraint firstItem="4V8-CB-Ch3" firstAttribute="leading" secondItem="7gv-Lp-TAf" secondAttribute="leadingMargin" id="tzB-bI-vz0"/>
+                                                <constraint firstItem="4V8-CB-Ch3" firstAttribute="trailing" secondItem="7gv-Lp-TAf" secondAttribute="trailingMargin" id="yDB-Ew-XQ3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="paragraphTextView" destination="4V8-CB-Ch3" id="lbk-bD-33y"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="f6X-li-pje" id="JMY-hb-I3O"/>

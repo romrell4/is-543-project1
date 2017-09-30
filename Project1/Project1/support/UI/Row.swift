@@ -8,12 +8,19 @@
 
 import Foundation
 
+enum RowType {
+	case detail
+	case paragraph
+}
+
 struct Row {
 	var text: String
 	var detailText: String?
+	var type: RowType
 	
-	init(text: String, detailText: String?) {
+	init(text: String, detailText: String? = nil, type: RowType = .detail) {
 		self.text = text
 		self.detailText = detailText
+		self.type = type
 	}
 }
