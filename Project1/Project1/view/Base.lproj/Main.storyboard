@@ -100,13 +100,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="founder1" translatesAutoresizingMaskIntoConstraints="NO" id="4Fb-QU-692" customClass="ProfileImageView" customModule="Project1" customModuleProvider="target">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="founder1" translatesAutoresizingMaskIntoConstraints="NO" id="4Fb-QU-692" customClass="ProfileImageView" customModule="Project1" customModuleProvider="target">
                                 <rect key="frame" x="112" y="64" width="150" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="M5o-0c-R5m"/>
                                     <constraint firstAttribute="width" secondItem="4Fb-QU-692" secondAttribute="height" multiplier="1:1" id="b8W-Cl-bs9"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="6rs-RV-2gq" appends="YES" id="sfN-XX-bgh"/>
+                                </connections>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Ub4-up-nOY">
                                 <rect key="frame" x="112" y="224" width="150" height="30"/>
@@ -255,6 +259,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Dv-1S-ULy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="6rs-RV-2gq">
+                    <connections>
+                        <action selector="imageTapped:" destination="f6X-li-pje" id="xOf-Nr-SyP"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1316" y="132.68365817091455"/>
         </scene>

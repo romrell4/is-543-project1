@@ -28,7 +28,7 @@ enum UrlType: String {
 	}
 }
 
-class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 	//MARK: Outlets
 	@IBOutlet private weak var profileImageView: ProfileImageView!
 	@IBOutlet private weak var profileImageHeightConstraint: NSLayoutConstraint!
@@ -40,15 +40,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	
 	//MARK: Private properties
 	var tableData = [Row]()
-	var inEditingMode: Bool = false {
-		didSet {
-			if !inEditingMode {
-				saveData()
-			}
-			navigationItem.rightBarButtonItem?.title = inEditingMode ? "Done" : "Edit"
-			reloadTableData()
-		}
-	}
+	var inEditingMode: Bool = false
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -106,10 +98,49 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 //		profileImageView.setNeedsLayout()
 //	}
 	
+	//MARK: UIImagePickerControllerDelegate callbacks
+	
+	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+		if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+			profileImageView.image = pickedImage
+		}
+		
+		dismiss(animated: true)
+	}
+	
 	//MARK: Listeners
 	
 	@objc func editButtonTapped() {
 		inEditingMode = !inEditingMode
+		if !inEditingMode {
+			saveData()
+			animate(start: false)
+		} else {
+			animate(start: true)
+		}
+		animate(start: inEditingMode)
+		navigationItem.rightBarButtonItem?.title = inEditingMode ? "Done" : "Edit"
+		reloadTableData()
+	}
+	
+	@IBAction func imageTapped(_ sender: Any) {
+		if inEditingMode {
+			let imagePicker = UIImagePickerController()
+			imagePicker.delegate = self
+			imagePicker.allowsEditing = false
+			
+			let alert = UIAlertController(title: "Select a Photo", message: nil, preferredStyle: .actionSheet)
+			alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (_) in
+				imagePicker.sourceType = .camera
+				self.present(imagePicker, animated: true)
+			}))
+			alert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (_) in
+				imagePicker.sourceType = .photoLibrary
+				self.present(imagePicker, animated: true)
+			}))
+			alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+			present(alert, animated: true)
+		}
 	}
 	
 	@IBAction func callButtonTapped(_ sender: Any) {
@@ -151,6 +182,18 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 			tableData.append(Row(text: bio, type: .paragraph))
 		}
 		tableView.reloadData()
+	}
+	
+	private func animate(start: Bool) {
+		if start {
+			UIView.animate(withDuration: 1.0, delay: 0, options: [.allowUserInteraction, .repeat, .autoreverse], animations: {
+				self.profileImageView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+			})
+		} else {
+			UIView.animate(withDuration: 0.5, animations: {
+				self.profileImageView.transform = .identity
+			})
+		}
 	}
 	
 	private func getValidUrl(type: UrlType, urlString: String?) -> URL? {
