@@ -4,6 +4,7 @@ This project ended up being a lot of work,but even more fun. I do iOS developmen
 
 * Overall
   * Figured out navigation bar coloring and status bar styling
+  * Created an app icon
 * Opening page
   * Created custom cell layouts to load good looking HIG cells
   * Got highlighting and de-highlighting working
