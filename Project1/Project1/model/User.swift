@@ -16,29 +16,25 @@ enum Status {
 }
 
 class User {
-	var firstName: String
-	var lastName: String
-	var preferredName: String
-	var fullName: String
+	var name: String
+	var companyName: String
 	var phone: String?
 	var email: String?
-	var bio: String?
-	var status: Status
-	var year: String
-	var address: String?
+	var spouseName: String?
+	var businessProfile: String?
+	var status: Status?
 	var photo: UIImage?
 	
-	init(firstName: String, lastName: String, preferredName: String, fullName: String, phone: String?, email: String?, bio: String?, status: Status, year: String, address: String?, photoName: String) {
-		self.firstName = firstName
-		self.lastName = lastName
-		self.preferredName = preferredName
-		self.fullName = fullName
-		self.phone = phone
-		self.email = email
-		self.bio = bio
-		self.status = status
-		self.year = year
-		self.address = address
-		self.photo = UIImage(named: photoName)
+	init(dict: [String: Any]) {
+		guard let name = dict["name"] as? String,
+			let companyName = dict["company_name"] as? String else {
+				fatalError("Invalid model provided")
+		}
+		self.name = name
+		self.companyName = companyName
+		self.phone = dict["phone"] as? String
+		self.email = dict["email"] as? String
+		self.businessProfile = dict["business_profile"] as? String
+		self.photo = UIImage(named: dict["photo"] as? String ?? "")
 	}
 }

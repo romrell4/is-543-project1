@@ -30,7 +30,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="founder1" translatesAutoresizingMaskIntoConstraints="NO" id="q5v-a0-imv" customClass="ProfileImageView" customModule="Project1" customModuleProvider="target">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="founder1" translatesAutoresizingMaskIntoConstraints="NO" id="q5v-a0-imv" customClass="ProfileImageView" customModule="Project1" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="8" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="FlN-Q6-Blv"/>
@@ -100,7 +100,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="founder1" translatesAutoresizingMaskIntoConstraints="NO" id="4Fb-QU-692" customClass="ProfileImageView" customModule="Project1" customModuleProvider="target">
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="founder1" translatesAutoresizingMaskIntoConstraints="NO" id="4Fb-QU-692" customClass="ProfileImageView" customModule="Project1" customModuleProvider="target">
                                 <rect key="frame" x="112" y="64" width="150" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>

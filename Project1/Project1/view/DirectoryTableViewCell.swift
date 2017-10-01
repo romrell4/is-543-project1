@@ -17,7 +17,7 @@ class DirectoryTableViewCell: UITableViewCell {
 	var user: User? {
 		didSet {
 			profileImageView.image = user?.photo
-			nameLabel.text = user?.fullName
+			nameLabel.text = user?.name
 		}
 	}
 }

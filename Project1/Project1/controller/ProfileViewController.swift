@@ -52,7 +52,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonTapped))
+		navigationItem.rightBarButtonItem = UIBarButtonItem(title: inEditingMode ? "Done" : "Edit", style: .plain, target: self, action: #selector(editButtonTapped))
 	}
 	
 	//MARK: UITableViewDataSource callbacks
@@ -164,21 +164,22 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	//MARK: Private functions
 	
 	private func setupUI() {
-		title = user.preferredName
+		title = user.name
 		profileImageView.image = user.photo
 		tableView.hideEmptyCells()
 		profileImageHeightConstraint.constant = PROFILE_IMAGE_HEIGHT
 	}
 	
 	private func reloadTableData() {
+		title = user.name
 		tableData = [
-			Row(text: "Name", detailText: user.fullName),
-			Row(text: "Company Name", detailText: "Unknown"),
+			Row(text: "Name", detailText: user.name),
+			Row(text: "Company Name", detailText: user.companyName),
 			Row(text: "Phone", detailText: user.phone),
 			Row(text: "Email", detailText: user.email),
-			Row(text: "Spouse Name", detailText: "Unknown"),
+			Row(text: "Spouse Name", detailText: user.spouseName),
 		]
-		if let bio = user.bio {
+		if let bio = user.businessProfile {
 			tableData.append(Row(text: bio, type: .paragraph))
 		}
 		tableView.reloadData()
@@ -206,16 +207,18 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	
 	private func saveData() {
 		//TODO: Add company and spouse if needed
-		guard let fullName = getDetailText(forRow: 0) else {
-			let alert = UIAlertController(title: "Error", message: "There was an error saving the data. Please try again later.", preferredStyle: .alert)
+		guard let name = getDetailText(forRow: 0), let companyName = getDetailText(forRow: 1) else {
+			let alert = UIAlertController(title: "Error", message: "Some required fields were missing. Please add all required fields.", preferredStyle: .alert)
 			alert.addAction(UIAlertAction(title: "OK", style: .default))
 			present(alert, animated: true)
 			return
 		}
-		user.fullName = fullName
+		user.name = name
+		user.companyName = companyName
 		user.phone = getDetailText(forRow: 2)
 		user.email = getDetailText(forRow: 3)
-		user.bio = getParagraphText(forRow: 5)
+		user.spouseName  = getDetailText(forRow: 4)
+		user.businessProfile = getParagraphText(forRow: 5)
 	}
 	
 	private func getDetailText(forRow row: Int) -> String? {
