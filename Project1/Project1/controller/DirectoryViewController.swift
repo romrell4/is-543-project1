@@ -20,6 +20,7 @@ class DirectoryViewController: UIViewController, UITableViewDataSource, UITableV
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		//Load data
 		Client.getAllUsers { users in
 			self.users = users
 			self.tableView.reloadData()
@@ -31,6 +32,7 @@ class DirectoryViewController: UIViewController, UITableViewDataSource, UITableV
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
+		//Deselect the selected row
 		if let indexPath = tableView.indexPathForSelectedRow {
 			tableView.deselectRow(at: indexPath, animated: true)
 		}

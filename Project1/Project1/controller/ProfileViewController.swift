@@ -52,6 +52,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
+		//Create bar button item
 		navigationItem.rightBarButtonItem = UIBarButtonItem(title: inEditingMode ? "Done" : "Edit", style: .plain, target: self, action: #selector(editButtonTapped))
 	}
 	
@@ -62,6 +63,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		//Paragraph cells have to be larger
 		return tableData[indexPath.row].type == .detail ? 50 : 100
 	}
 	
@@ -69,6 +71,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		let row = tableData[indexPath.row]
 		switch row.type {
 		case .detail:
+			//If they're editing, load the cell with a text field. Otherwise load the cell with just labels
 			if inEditingMode, let cell = tableView.dequeueReusableCell(withIdentifier: "editCell", for: indexPath) as? ProfileEditableTableViewCell {
 				cell.row = row
 				return cell
@@ -79,7 +82,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 				return cell
 			}
 		case .paragraph:
+			//If this row is a paragraph, load the paragraph cell
 			if let cell = tableView.dequeueReusableCell(withIdentifier: "paragraphCell", for: indexPath) as? ProfileParagraphTableViewCell {
+				//TextView should only be editable if they're in editing mode
 				cell.paragraphTextView.isEditable = inEditingMode
 				cell.paragraphTextView.text = row.text
 				cell.paragraphTextView.scrollRangeToVisible(NSRange(location: 0, length: 0))
@@ -114,9 +119,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		inEditingMode = !inEditingMode
 		if !inEditingMode {
 			saveData()
-			animate(start: false)
-		} else {
-			animate(start: true)
 		}
 		animate(start: inEditingMode)
 		navigationItem.rightBarButtonItem?.title = inEditingMode ? "Done" : "Edit"
@@ -124,11 +126,13 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	}
 	
 	@IBAction func imageTapped(_ sender: Any) {
+		//Only do something if we're in edit mode
 		if inEditingMode {
 			let imagePicker = UIImagePickerController()
 			imagePicker.delegate = self
 			imagePicker.allowsEditing = false
 			
+			//Allow them to choose where the image comes from
 			let alert = UIAlertController(title: "Select a Photo", message: nil, preferredStyle: .actionSheet)
 			alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (_) in
 				imagePicker.sourceType = .camera
@@ -187,10 +191,12 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	
 	private func animate(start: Bool) {
 		if start {
+			//Start the repeating animation to show the user that the image is editable
 			UIView.animate(withDuration: 1.0, delay: 0, options: [.allowUserInteraction, .repeat, .autoreverse], animations: {
 				self.profileImageView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
 			})
 		} else {
+			//Make an animation to make the image the regular size again
 			UIView.animate(withDuration: 0.5, animations: {
 				self.profileImageView.transform = .identity
 			})
@@ -198,6 +204,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	}
 	
 	private func getValidUrl(type: UrlType, urlString: String?) -> URL? {
+		//If the url can't open, display an error
 		guard let tmp = urlString, let url = URL(string: "\(type.prefix):\(tmp)"), UIApplication.shared.canOpenURL(url) else {
 			displayDialog(title: "Error", message: "This device cannot contact this user's \(type.valueName) (\(urlString ?? "Unknown")).")
 			return nil
@@ -206,7 +213,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	}
 	
 	private func saveData() {
-		//TODO: Add company and spouse if needed
 		guard let name = getDetailText(forRow: 0), let companyName = getDetailText(forRow: 1) else {
 			let alert = UIAlertController(title: "Error", message: "Some required fields were missing. Please add all required fields.", preferredStyle: .alert)
 			alert.addAction(UIAlertAction(title: "OK", style: .default))

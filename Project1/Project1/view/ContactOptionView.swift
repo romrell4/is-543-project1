@@ -12,6 +12,7 @@ private let HEIGHT: CGFloat = 40
 
 class ContactOptionButton: UIButton {
 	override func awakeFromNib() {
+		//Make the button round and have a pink background
 		backgroundColor = .contactButton
 		layer.cornerRadius = HEIGHT / 2
 		layer.masksToBounds = true

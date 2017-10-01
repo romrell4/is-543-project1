@@ -10,6 +10,7 @@ import UIKit
 
 class ProfileImageView: UIImageView {
 	override func layoutSubviews() {
+		//Make view round
 		layer.cornerRadius = frame.height / 2
 		layer.masksToBounds = true
 		layer.borderWidth = 0
