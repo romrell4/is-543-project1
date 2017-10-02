@@ -12,12 +12,14 @@ class DirectoryTableViewCell: UITableViewCell {
 	//MARK: Outlets
 	@IBOutlet weak var profileImageView: UIImageView!
 	@IBOutlet weak var nameLabel: UILabel!
+	@IBOutlet weak var jobLabel: UILabel!
 	
 	//MARK: Public properties
 	var user: User? {
 		didSet {
 			profileImageView.image = user?.photo
 			nameLabel.text = user?.name
+			jobLabel.text = user?.companyName
 		}
 	}
 }
